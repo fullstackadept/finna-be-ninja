@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# setup ruby-build
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+rbenv install 2.0.0-p598
+rbenv rehash
+rbenv install 2.1.2
+rbenv rehash
+rbenv install jruby-1.7.18
+rbenv rehash
+rbenv install jruby-9.0.0.0-pre1
+rbenv rehash
+
+# install bundler in each
+rbenv local 2.0.0-p598 && gem install bundler
+rbenv local 2.1.2 && gem install bundler
+rbenv local jruby-1.7.18 && gem install bundler
+rbenv local jruby-9.0.0.0-pre1 && gem install bundler
+
+# remove local version file
+rm .ruby-version
+
+# set global version
+rbenv global 2.1.2
+
+echo "Installed Ruby, Rubygems, and Bundler for:"
+rbenv versions

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# install build libs, common clients, and system ruby
+sudo apt-get install -y autoconf automake bison build-essential curl flex gettext git libc6-dev libmysqlclient-dev libmysqlclient18 libreadline-dev libreadline6 libreadline6-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt-dev libyaml-dev mysql-client-5.5 ncurses-dev nodejs openssl sqlite3 zlib1g zlib1g-dev zlibc ruby2.0 ruby2.0-dev rubygems-integration
+
+# set gem preference
+echo "gem: --no-document" >> ~/.gemrc
+
+# install bundler
+sudo gem install bundler
+
+# setup rbenv
+git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+echo "Exit shell, relaunch, and run ./setup_rbenv.sh"
+
